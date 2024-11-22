@@ -1,0 +1,10 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    background-color: rgba(128, 128, 128, 0);
+    color: black;
+    border: none;
+}
