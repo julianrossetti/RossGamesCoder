@@ -1,6 +1,5 @@
-import {useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import Card from "../Card/Card";
-import "./ItemList.css"
 
 const mockItems = [
     { id: 1, name: "Mouse Gamer X7", price: 29.99, description: "Mouse ergonómico con 7 botones programables", category: "perifericos" },
@@ -20,28 +19,20 @@ const mockItems = [
     { id: 12, name: "SSD Samsung 980 Pro 500GB", price: 129.99, description: "SSD ultra rápido con tecnología PCIe 4.0", category: "almacenamientos" }
   ];
 
-const ItemList = () => {
-    const {categoryId} = useParams()
-    const filteredItems = categoryId != "productos" ? mockItems.filter(item => item.category === categoryId) : mockItems
-  return (
-    <>
-    <h2>Productos:</h2>
-    <ul className="listUl">
-        {filteredItems.map(item => (
-            <li className="listItem" key={item.id}>
-                <Card
-                itemId = {item.id}
-                name = {item.name}
-                price = {item.price}
-                addToCart= "Añadir al carrito"
-                detail= "detalles"
-                />
-            </li>
-        ))
-        }
-    </ul>
-    </>
-  )
+const ItemDetail = () => {
+    const {itemId} = useParams()
+    console.log(itemId)
+    const item = mockItems.find(item => item.id === parseInt(itemId))
+    return (
+      <Card
+      key={item.id}
+      id = {item.id}
+      name = {item.name}
+      price = {item.price}
+      description = {item.description}
+      addToCart= "añadir al carrito"
+      />
+    )
 }
 
-export default ItemList
+export default ItemDetail
