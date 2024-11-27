@@ -1,3 +1,83 @@
-.card{
-    width: 200px;
-}
+/* Estilo general de la tarjeta */
+.card {
+    max-width: 350px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo del contenido del cuerpo */
+  .card-body {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Título principal */
+  .card-body h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #888;
+    font-weight: normal;
+  }
+  
+  /* Nombre del producto */
+  .card-body .card-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Precio */
+  .card-body .card-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+  
+  /* Descripción */
+  .card-body p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  /* Botones */
+  .card-body button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+  
+  .card-body button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Enlace del botón de añadir al carrito */
+  .card-body .card-link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .card-body .card-link:hover {
+    text-decoration: underline;
+  }
+  

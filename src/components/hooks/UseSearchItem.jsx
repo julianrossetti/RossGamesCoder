@@ -1,7 +1,5 @@
-import { getItems } from "../Mockproducts";
-import {useParams } from "react-router-dom"
-import {useState, useEffect } from "react";
-import "./ItemDetail.css"
+import { useState} from "react"
+import { useParams } from "react-router-dom";
 
 const mockItems = [
   { id: 1, name: "Mouse Gamer X7", price: 29.99, description: "Mouse ergonómico con 7 botones programables", category: "perifericos" },
@@ -21,18 +19,22 @@ const mockItems = [
   { id: 12, name: "SSD Samsung 980 Pro 500GB", price: 129.99, description: "SSD ultra rápido con tecnología PCIe 4.0", category: "almacenamientos" }
 ];
 
-const ItemDetail = () => {
-  const { itemId } = useParams()
-  const item = mockItems.find(item => item.id === parseInt(itemId))
-  return (
-    <div key={item.id} className="product-details">
-      <p className="product-id">{item.id}</p>
-      <h2>{item.name}</h2>
-      <p><strong>{item.price}</strong></p>
-      <p><strong>{item.description}</strong></p>
-      <button className="add-to-cart-button">Añadir al carrito</button>
-    </div>
-  )
+const UseSearchItem = () => {
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState(mockItems)
+  const search = (word) => {
+    const lowerCaseWord = word.toLowerCase();
+    const filteredProducts = mockItems.filter((item) =>
+      Object.values(item).some((value) =>
+        String(value).toLowerCase().includes(lowerCaseWord)
+      )
+    );
+    if(categoryId === "productos"){setProducts(mockItems)}
+    setProducts(filteredProducts); // Actualiza el estado con los productos filtrados
+  };
+  return {
+    search, products
+  }
 }
 
-export default ItemDetail
+export default UseSearchItem
