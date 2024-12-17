@@ -1,12 +1,14 @@
 .listItem{
     list-style: none;
+    width: 400px;
+    height: 500px;
 }
 
-.listUl{
+.listUl {
     display: grid;
-    gap: 1.5rem; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding: 0;
-    margin: 0;
+    grid-template-columns: repeat(3, 1fr);
     list-style: none;
-}
+    padding: 0;
+    margin: 0 auto;
+    max-width: 80%;
+  }

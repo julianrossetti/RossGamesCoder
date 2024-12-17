@@ -3,11 +3,12 @@ import "./NavBar.css"
 import {Link} from "react-router-dom"
 
 function NavBar() {
-
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div>
+          <Link to="/" className="navbar-brand" href="#">RossGames</Link>
+        </div>
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand" href="#">RossGames</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -39,7 +40,9 @@ function NavBar() {
           </ul>
         </div>
       </div>
-      <CartWidget />
+      <div>
+        <CartWidget />
+      </div>
     </nav>
   )
 }
