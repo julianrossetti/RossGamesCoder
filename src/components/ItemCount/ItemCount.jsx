@@ -1,20 +1,20 @@
 import {useState} from "react"
+import "./ItemCount.css"
 
 
-const ItemCount = () => {
-    const [counter, setCounter] = useState(0)
+const ItemCount = ({quantity, setQuantity}) => {
     const Increment = () =>{
-        setCounter((counter) => counter + 1)
+        setQuantity((counter) => counter + 1)
     }
     const Decrement = () =>{
-        setCounter((counter) => counter - 1)
+        setQuantity((counter) => counter - 1)
     }
   return (
-    <>
+    <div className="counter">
     <button onClick={Increment}>+</button>
-    <h2>{counter}</h2>
+    <h2>{quantity}</h2>
     <button onClick={Decrement}>-</button>
-    </>
+    </div>
   )
 }
 

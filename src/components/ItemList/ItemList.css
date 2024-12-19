@@ -12,3 +12,14 @@
     margin: 0 auto;
     max-width: 80%;
   }
+
+.linkeo{
+    text-decoration: none;
+    color: black;
+  }
+
+.linkeo:hover{
+    color: #999;
+    background-color: #252525;
+    text-decoration: underline;
+}

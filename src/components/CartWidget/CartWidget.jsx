@@ -1,6 +1,6 @@
 import "./Cart.Widget.css"
-import carro from "../img/carrito.png"
 import {Link} from "react-router-dom"
+import carro from "../../assets/img/carrito.png"
 
 function CartWidget(){
     return (

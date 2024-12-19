@@ -1,5 +1,6 @@
 import Card from "../Card/Card";
 import "./ItemList.css"
+import {Link} from "react-router-dom"
 
 const ItemList = ({products}) => {
   return (

@@ -8,30 +8,34 @@ import { CartContext } from "../Contexts/CartContext";
 
 
 const ItemDetail = () => {
+  const [quantity, setQuantity] = useState(1);
   const [products, setProducts] = useState([])
   useEffect(()=>{
     getItems()
-      .then((data)=>{
+    .then((data)=>{
         setProducts(data)
       })
-  },[])
-  const {addItem, cart} = useContext(CartContext)
-  const { itemId } = useParams()
-  const item = products.find(item => item.id === parseInt(itemId))
-  console.log(cart)
-  if (!item) {
-    return <p>Cargando detalles del producto...</p>;
-  }
+    },[])
+    const {addItem, cart} = useContext(CartContext)
+    const { itemId } = useParams()
+    const item = products.find(item => item.id === parseInt(itemId))
+    if (!item) {
+      return <p>Cargando detalles del producto...</p>;
+    }
   return (
     <>
     <div key={item.id} className="product-details">
-      <p className="product-id">{item.id}</p>
-      <h2>{item.name}</h2>
-      <p><strong>{item.price}</strong></p>
-      <p><strong>{item.description}</strong></p>
-      <button className="add-to-cart-button" onClick={()=>addItem(item)}>Añadir al carrito</button>
+      <div>
+        <img src={item.img} alt="" />
+      </div>
+      <div className="desc">
+        <h2>{item.name}</h2>
+        <p><strong>{item.price}</strong></p>
+        <p><strong>{item.description}</strong></p>
+        <button className="add-to-cart-button" onClick={()=>addItem(item, quantity)}>Añadir al carrito</button>
+        <ItemCount quantity={quantity} setQuantity={setQuantity}/>  
+      </div>
     </div>
-    <ItemCount/>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { CartContext } from "../Contexts/CartContext"
-import Card from "../Card/Card"
+import CartCard from "./CartCard"
 
   const Cart = () => {
   const {cart} = useContext(CartContext)
@@ -11,12 +11,13 @@ import Card from "../Card/Card"
     <ul className="listUl">
         {cart.map(item => (
           <li className="listItem" key={item.id}>
-            <Card
+            <CartCard
               img={item.img}
               itemId={item.id}
               name={item.name}
               price={item.price}
               detail="MÁS"
+              remove="Remover Producto"
             />
           </li>
         ))
