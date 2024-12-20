@@ -1,14 +1,20 @@
 import { useEffect, useState} from "react"
 import { useParams } from "react-router-dom";
-import { getItems } from "../Mockproducts";
+//import { getItems } from "../Mockproducts";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/firebase";
 
 const UseSearchItem = () => {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([])
   useEffect(()=>{
-    getItems()
-      .then((data)=>{
-        setProducts(data)
+    const collectionRef = collection(db, "products")
+    getDocs(collectionRef)
+      .then((querySnapshot)=>{
+        const items = querySnapshot.docs.map((doc)=>{
+          return {id: doc.id, ...doc.data()}
+        })
+        setProducts(items)
       })
   },[])
   const search = (word) => {

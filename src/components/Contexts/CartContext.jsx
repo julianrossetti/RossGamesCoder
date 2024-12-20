@@ -6,7 +6,7 @@ import React from 'react'
 
 export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
-    const addItem = (item, quantity)=>{
+    const addItem = (item)=>{
         setCart((prevCart)=>{
           const isInCart = prevCart.some((itemCart)=> itemCart.id === item.id)
           if (isInCart){

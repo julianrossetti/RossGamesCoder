@@ -12,10 +12,11 @@ import CartCard from "./CartCard"
         {cart.map(item => (
           <li className="listItem" key={item.id}>
             <CartCard
+              id={item.id}
               img={item.img}
-              itemId={item.id}
               name={item.name}
               price={item.price}
+              cant={item.cant}
               detail="MÁS"
               remove="Remover Producto"
             />
