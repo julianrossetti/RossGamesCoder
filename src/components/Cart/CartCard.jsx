@@ -1,7 +1,9 @@
 import {Link} from "react-router-dom"
+import { useContext } from "react"
+import { CartContext } from "../Contexts/CartContext"
 
-
-const CartCard = ({id, name, price, img, itemId, description, detail, remove, cant}) => {
+const CartCard = ({id, name, price, img, description, detail, remove, cant}) => {
+    const{removeItem} = useContext(CartContext)
     return (
             <div className="card">
                 <div className="card-body">
@@ -12,7 +14,7 @@ const CartCard = ({id, name, price, img, itemId, description, detail, remove, ca
                         <p>{description}</p>
                         <p>Cantidad: {cant}</p>
                         <Link to = {`/productos/${id}`}><button>{detail}</button></Link>
-                        <button>{remove}</button>
+                        <button onClick={()=>{removeItem(id)}}>{remove}</button>
                     </div>
                 </div>
             </div>
