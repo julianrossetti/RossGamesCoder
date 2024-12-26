@@ -1,9 +1,18 @@
 import { useContext, useState } from "react"
+import "./CheckOut.css"
 import { CartContext } from "../Contexts/CartContext"
 import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from "firebase/firestore"
 import { db } from "../../services/firebase"
 
 const CheckOut = () => {
+
+  const [person, setPerson] = useState({
+    name: "",
+    lastname: "",
+    phoneNumber: "",
+    addres: "",
+    email: ""
+  })
 
   const [orderCreated, setOrderCreated] = useState(false)
 
@@ -17,11 +26,11 @@ const CheckOut = () => {
     try{
     const ObjOrder = {
       buyer: {      
-        name: "Pepe",
-        lastname: "Mujica",
-        phoneNumber: 123456,
-        addres: "Calle falsa 123",
-        email: "pepe@gmail.com"
+        name: person.name,
+        lastname: person.lastname,
+        phoneNumber: person.phoneNumber,
+        addres: person.addres,
+        email: person.email
       },
       items: cart,
       total,
@@ -68,12 +77,32 @@ const CheckOut = () => {
   }
 
   if (orderCreated){
-    <h1>La orden fue creada correctamente</h1>
+    return <h1>La orden fue creada correctamente</h1>
+  }
+
+  const handleChange = (e)=>{
+    e.preventDefault()
+    const {name, value} = e.target
+    setPerson((prevPerson)=>({
+      ...prevPerson, [name]: value,
+    }))
   }
   return (
-    <>
+    <div className="checkoutForm">
+      <form action="submit">
+        <label htmlFor="name">Nombre</label>
+        <input type="text" name="name" onChange={handleChange} value={person.name} placeholder="Name" required/>
+        <label htmlFor="name">Apellido</label>
+        <input type="text" name="lastname" onChange={handleChange} value={person.lastname} placeholder="lastname" required/>
+        <label htmlFor="phoneNumber">Número telefónico</label>
+        <input type="number" name="phoneNumber" onChange={handleChange} value={person.phoneNumber} placeholder="Phone number" required/>
+        <label htmlFor="addres">Dirección</label>
+        <input type="text" onChange={handleChange} name="addres" value={person.addres} placeholder="Addres" required/>
+        <label htmlFor="email">email</label>
+        <input type="email" onChange={handleChange} name="email" value={person.email} placeholder="Email" required/>
+      </form>
       <button onClick={CreateOrder}>Generar orden de compra</button>
-    </>
+    </div>
   )
 }
 
